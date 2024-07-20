@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+ï»¿#include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
 constexpr ll INF = 2e18;
@@ -6,9 +6,9 @@ constexpr ll INF = 2e18;
 namespace {
 
 /**
- * @brief  ‘S’¸“_‚©‚çŠe’¸“_‚Ö‚ÌÅ’ZŒo˜H‚ğ‹‚ß‚é
- * @brief  dp[i][i] = 0, dp[s][t] = c, ‚»‚Ì‘¼INF ‚ª“ü—ÍÏ‚İ‚Å‚ ‚é‚±‚Æ
- * @return •‰•Â˜H‚ª‘¶İ‚·‚é‚Æ‚«false –³‚¯‚ê‚Îtrue
+ * @brief  å…¨é ‚ç‚¹ã‹ã‚‰å„é ‚ç‚¹ã¸ã®æœ€çŸ­çµŒè·¯ã‚’æ±‚ã‚ã‚‹
+ * @brief  dp[i][i] = 0, dp[s][t] = c, ãã®ä»–INF ãŒå…¥åŠ›æ¸ˆã¿ã§ã‚ã‚‹ã“ã¨
+ * @return è² é–‰è·¯ãŒå­˜åœ¨ã™ã‚‹ã¨ãfalse ç„¡ã‘ã‚Œã°true
  */
 bool WarshallFloyd(std::vector<std::vector<ll>>& dp) {
   const size_t v = dp.size();

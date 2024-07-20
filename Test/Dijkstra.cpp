@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+ï»¿#include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
 constexpr ll INF = 1LL << 60;
@@ -6,10 +6,10 @@ constexpr ll INF = 1LL << 60;
 namespace {
 
 /**
- * @brief ’Pˆên“_‚©‚çŠe’¸“_‚Ö‚ÌÅ’ZŒo˜H‚ğ‹‚ß‚é
- * @brief •‰•Ó‚ª‘¶İ‚·‚éê‡‚Íg—p•s‰Â(BellmanFord–@‚ª—LŒø)
- * @brief graph ‚ÌŠe—v‘f‚ÌŠe•Ó‚Í <to, cost>
- * @brief dists ‚Ì‘S—v‘f‚ğ INF ‚Å‰Šú‰»‚µ‚Ä‚¨‚­‚±‚Æ
+ * @brief å˜ä¸€å§‹ç‚¹ã‹ã‚‰å„é ‚ç‚¹ã¸ã®æœ€çŸ­çµŒè·¯ã‚’æ±‚ã‚ã‚‹
+ * @brief è² è¾ºãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ä½¿ç”¨ä¸å¯(BellmanFordæ³•ãŒæœ‰åŠ¹)
+ * @brief graph ã®å„è¦ç´ ã®å„è¾ºã¯ <to, cost>
+ * @brief dists ã®å…¨è¦ç´ ã‚’ INF ã§åˆæœŸåŒ–ã—ã¦ãŠãã“ã¨
  */
 void Dijkstra(const vector<vector<pair<int, ll>>>& graph, vector<ll>& dists,
               int s) {

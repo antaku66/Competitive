@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+ï»¿#include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
 constexpr ll INF = 1LL << 60;
@@ -6,11 +6,11 @@ constexpr ll INF = 1LL << 60;
 namespace {
 
 class SegmentTree {
-  // Update  : (0 ~ n-1 ‚Ì“à)pos”Ô–Ú‚Ì—t‚ðXV
-  // Query   : [a, b)ŠJ‹æŠÔ‚ÌÅ‘å’l(Å¬’l)‚ðŽæ“¾
+  // Update  : (0 ~ n-1 ã®å†…)posç•ªç›®ã®è‘‰ã‚’æ›´æ–°
+  // Query   : [a, b)é–‹åŒºé–“ã®æœ€å¤§å€¤(æœ€å°å€¤)ã‚’å–å¾—
   // data_   : 1 ~ (n * 2 - 1)
-  // size_   : —t‚Ì”
-  // getMax_ : Å‘å’l‚ðŽæ“¾‚·‚é‚È‚çTrue Å¬’l‚È‚çFalse
+  // size_   : è‘‰ã®æ•°
+  // getMax_ : æœ€å¤§å€¤ã‚’å–å¾—ã™ã‚‹ãªã‚‰True æœ€å°å€¤ãªã‚‰False
  public:
   SegmentTree(ll n, bool getMax) : getMax_(getMax) {
     while (size_ < n) size_ *= 2;
@@ -30,11 +30,11 @@ class SegmentTree {
   ll Query(ll a, ll b) { return DoQuery(a, b, 1, 0, size_); }
 
  private:
-  // k:Œ»ÝŒ©‚Ä‚¢‚éƒm[ƒh‚ÌˆÊ’u  [l,r):data_[k]‚ª•\‚µ‚Ä‚¢‚é‹æŠÔ
+  // k:ç¾åœ¨è¦‹ã¦ã„ã‚‹ãƒŽãƒ¼ãƒ‰ã®ä½ç½®  [l,r):data_[k]ãŒè¡¨ã—ã¦ã„ã‚‹åŒºé–“
   ll DoQuery(ll a, ll b, ll k, ll l, ll r) {
-    if (r <= a || b <= l) {  // ”ÍˆÍŠO‚È‚çl‚¦‚È‚¢
+    if (r <= a || b <= l) {  // ç¯„å›²å¤–ãªã‚‰è€ƒãˆãªã„
       return getMax_ ? 0 : INF;
-    } else if (a <= l && r <= b) {  // ”ÍˆÍ“à‚È‚Ì‚ÅŽ©g‚Ì’l‚ð•Ô‚·
+    } else if (a <= l && r <= b) {  // ç¯„å›²å†…ãªã®ã§è‡ªèº«ã®å€¤ã‚’è¿”ã™
       return data_[k];
     } else {
       ll vl = DoQuery(a, b, k * 2, l, (l + r) / 2);

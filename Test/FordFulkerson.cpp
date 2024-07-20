@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+ï»¿#include <bits/stdc++.h>
 using namespace std;
 #define rep(i, s, n) for (int i = s; i < (n); ++i)
 
@@ -11,28 +11,28 @@ struct Edge {
 
 class FordFulkerson {
  public:
-  // ’¸“_” ni 0 ~ n-1 ‚Ü‚Åj‚Ìc—]ƒOƒ‰ƒt‚ğ€”õ
+  // é ‚ç‚¹æ•° nï¼ˆ 0 ~ n-1 ã¾ã§ï¼‰ã®æ®‹ä½™ã‚°ãƒ©ãƒ•ã‚’æº–å‚™
   FordFulkerson(int n) : size_(n) {
     graph_.resize(n);
     used_ = vector<bool>(n, false);
   }
 
-  // ’¸“_ a ‚©‚ç b ‚ÉŒü‚©‚¤AãŒÀ c ƒŠƒbƒgƒ‹^•b‚Ì•Ó‚ğ’Ç‰Á
+  // é ‚ç‚¹ a ã‹ã‚‰ b ã«å‘ã‹ã†ã€ä¸Šé™ c ãƒªãƒƒãƒˆãƒ«ï¼ç§’ã®è¾ºã‚’è¿½åŠ 
   void AddEdge(int a, int b, int c) {
-    int current_a = graph_[a].size();  // Œ»“_‚Å‚Ì graph_[a] ‚Ì—v‘f”
-    int current_b = graph_[b].size();  // Œ»“_‚Å‚Ì graph_[b] ‚Ì—v‘f”
+    int current_a = graph_[a].size();  // ç¾æ™‚ç‚¹ã§ã® graph_[a] ã®è¦ç´ æ•°
+    int current_b = graph_[b].size();  // ç¾æ™‚ç‚¹ã§ã® graph_[b] ã®è¦ç´ æ•°
     graph_[a].push_back(Edge{b, c, current_b});
     graph_[b].push_back(Edge{a, 0, current_a});
   }
 
-  // ’¸“_ s ‚©‚ç’¸“_ t ‚Ü‚Å‚ÌÅ‘åƒtƒ[‚Ì‘—¬—Ê‚ğ•Ô‚·
+  // é ‚ç‚¹ s ã‹ã‚‰é ‚ç‚¹ t ã¾ã§ã®æœ€å¤§ãƒ•ãƒ­ãƒ¼ã®ç·æµé‡ã‚’è¿”ã™
   int Calc(int s, int t) {
     int totalFlow = 0;
     while (true) {
       for (int i = 0; i < size_; ++i) used_[i] = false;
       int f = DFS(s, t, 1e9);
 
-      // ƒtƒ[‚ğ—¬‚¹‚È‚­‚È‚Á‚½‚ç‘€ìI—¹
+      // ãƒ•ãƒ­ãƒ¼ã‚’æµã›ãªããªã£ãŸã‚‰æ“ä½œçµ‚äº†
       if (f == 0) break;
       totalFlow += f;
     }
@@ -40,25 +40,25 @@ class FordFulkerson {
   }
 
  private:
-  // [‚³—Dæ’TõiF ‚ÍƒXƒ^[ƒg‚©‚ç pos ‚É“’B‚·‚é‰ß’ö‚Å‚Ì
-  // " c—]ƒOƒ‰ƒt‚Ì•Ó‚Ì—e—Ê " ‚ÌÅ¬’lj
-  // •Ô‚è’l‚Í—¬‚µ‚½ƒtƒ[‚Ì—Êi—¬‚¹‚È‚¢ê‡ 0 ‚ğ•Ô‚·j
+  // æ·±ã•å„ªå…ˆæ¢ç´¢ï¼ˆF ã¯ã‚¹ã‚¿ãƒ¼ãƒˆã‹ã‚‰ pos ã«åˆ°é”ã™ã‚‹éç¨‹ã§ã®
+  // " æ®‹ä½™ã‚°ãƒ©ãƒ•ã®è¾ºã®å®¹é‡ " ã®æœ€å°å€¤ï¼‰
+  // è¿”ã‚Šå€¤ã¯æµã—ãŸãƒ•ãƒ­ãƒ¼ã®é‡ï¼ˆæµã›ãªã„å ´åˆ 0 ã‚’è¿”ã™ï¼‰
   int DFS(int pos, int goal, int F) {
-    // ƒS[ƒ‹‚É“’…Fƒtƒ[‚ğ—¬‚¹‚éI
+    // ã‚´ãƒ¼ãƒ«ã«åˆ°ç€ï¼šãƒ•ãƒ­ãƒ¼ã‚’æµã›ã‚‹ï¼
     if (pos == goal) return F;
     used_[pos] = true;
 
     for (int i = 0; i < graph_[pos].size(); i++) {
-      // —e—Ê 0 ‚Ì•Ó‚Íg‚¦‚È‚¢
+      // å®¹é‡ 0 ã®è¾ºã¯ä½¿ãˆãªã„
       if (graph_[pos][i].cap_ == 0) continue;
 
-      // Šù‚É–K–â‚µ‚½’¸“_‚És‚Á‚Ä‚àˆÓ–¡‚ª‚È‚¢
+      // æ—¢ã«è¨ªå•ã—ãŸé ‚ç‚¹ã«è¡Œã£ã¦ã‚‚æ„å‘³ãŒãªã„
       if (used_[graph_[pos][i].to_]) continue;
 
-      // –Ú“I’n‚Ü‚Å‚ÌƒpƒX‚ğ’T‚·
+      // ç›®çš„åœ°ã¾ã§ã®ãƒ‘ã‚¹ã‚’æ¢ã™
       int flow = DFS(graph_[pos][i].to_, goal, min(F, graph_[pos][i].cap_));
 
-      // ƒtƒ[‚ğ—¬‚¹‚éê‡Ac—]ƒOƒ‰ƒt‚Ì—e—Ê‚ğ flow ‚¾‚¯‘Œ¸‚³‚¹‚é
+      // ãƒ•ãƒ­ãƒ¼ã‚’æµã›ã‚‹å ´åˆã€æ®‹ä½™ã‚°ãƒ©ãƒ•ã®å®¹é‡ã‚’ flow ã ã‘å¢—æ¸›ã•ã›ã‚‹
       if (flow >= 1) {
         graph_[pos][i].cap_ -= flow;
         graph_[graph_[pos][i].to_][graph_[pos][i].rev_].cap_ += flow;
@@ -66,7 +66,7 @@ class FordFulkerson {
       }
     }
 
-    // ‚·‚×‚Ä‚Ì•Ó‚ğ’Tõ‚µ‚Ä‚àŒ©‚Â‚©‚ç‚È‚©‚Á‚½
+    // ã™ã¹ã¦ã®è¾ºã‚’æ¢ç´¢ã—ã¦ã‚‚è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸ
     return 0;
   }
 

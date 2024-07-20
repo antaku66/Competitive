@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+ï»¿#include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
 const double PI = 3.141592653589793;
@@ -7,13 +7,13 @@ constexpr int MOD = 1e9 + 7;
 
 namespace {
 
-// Ø‚èÌ‚Ä‚ÌŠ„Z(¤‚ª•‰”‚É‚È‚éê‡‚Í”’¼üã‚Å¶‘¤‚Ì’l‚ğ•Ô‚·)
+// åˆ‡ã‚Šæ¨ã¦ã®å‰²ç®—(å•†ãŒè² æ•°ã«ãªã‚‹å ´åˆã¯æ•°ç›´ç·šä¸Šã§å·¦å´ã®å€¤ã‚’è¿”ã™)
 ll Floor(ll x, ll m) {
   ll r = (x % m + m) % m;
   return (x - r) / m;
 }
 
-// 10i”‚Ìn‚ğNi”‚É•ÏŠ·
+// 10é€²æ•°ã®nã‚’Né€²æ•°ã«å¤‰æ›
 string BaseTenToN(ll n, int N) {
   if (n == 0) return "0";
   string str = "";
@@ -24,7 +24,7 @@ string BaseTenToN(ll n, int N) {
   return str;
 }
 
-// Ni”‚ğ10i”‚É•ÏŠ·
+// Né€²æ•°ã‚’10é€²æ•°ã«å¤‰æ›
 ll BasenToTen(string str, int N) {
   ll n = 0, m = 1;
   for (ll i = str.size() - 1; i >= 0; --i) {
@@ -34,7 +34,7 @@ ll BasenToTen(string str, int N) {
   return n;
 }
 
-// a ‚Ì b æ‚ğ m ‚ÅŠ„‚Á‚½—]‚è‚ğ•Ô‚·
+// a ã® b ä¹—ã‚’ m ã§å‰²ã£ãŸä½™ã‚Šã‚’è¿”ã™
 ll Power(ll a, ll b, ll m) {
   ll p = a, answer = 1;
   for (int i = 0; i < 60; i++) {
@@ -47,10 +47,10 @@ ll Power(ll a, ll b, ll m) {
   return answer;
 }
 
-// a € b ‚ğ m ‚ÅŠ„‚Á‚½—]‚è‚ğ•Ô‚·
+// a Ã· b ã‚’ m ã§å‰²ã£ãŸä½™ã‚Šã‚’è¿”ã™
 ll Division(ll a, ll b, ll m) { return (a * Power(b, m - 2, m)) % m; }
 
-// nCr‚ğm‚ÅŠ„‚Á‚½—]‚è‚ğ•Ô‚·
+// nCrã‚’mã§å‰²ã£ãŸä½™ã‚Šã‚’è¿”ã™
 ll nCr(ll n, ll r, ll m) {
   if (n < r) return 0;
   r = min(r, n - r);
@@ -62,7 +62,7 @@ ll nCr(ll n, ll r, ll m) {
   return Division(a, b, m);
 }
 
-// nCr‚ğ‚»‚Ì‚Ü‚Ü•Ô‚·(ƒI[ƒo[ƒtƒ[‚É’ˆÓ)
+// nCrã‚’ãã®ã¾ã¾è¿”ã™(ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ã«æ³¨æ„)
 ll nCr(ll n, ll r) {
   if (n < r) return 0;
   r = min(r, n - r);
@@ -74,7 +74,7 @@ ll nCr(ll n, ll r) {
   return a / b;
 }
 
-// ‘f””»’è
+// ç´ æ•°åˆ¤å®š
 bool IsPrime(ll num) {
   if (num == 2) return true;
   for (int i = 2; i * i <= num; ++i) {
@@ -83,24 +83,24 @@ bool IsPrime(ll num) {
   return true;
 }
 
-// ‘fˆö”•ª‰ğ
+// ç´ å› æ•°åˆ†è§£
 vector<pair<ll, ll>> PrimeFactorize(ll N) {
   vector<pair<ll, ll>> res;
   for (ll a = 2; a * a <= N; ++a) {
     if (N % a != 0) continue;
-    ll ex = 0;  // w”
+    ll ex = 0;  // æŒ‡æ•°
 
     while (N % a == 0) {
       ++ex;
-      N /= a;  // Š„‚ê‚éŒÀ‚èŠ„‚è‘±‚¯‚é
+      N /= a;  // å‰²ã‚Œã‚‹é™ã‚Šå‰²ã‚Šç¶šã‘ã‚‹
     }
     res.push_back({a, ex});
   }
-  if (N != 1) res.push_back({N, 1});  // ÅŒã‚Éc‚Á‚½”
+  if (N != 1) res.push_back({N, 1});  // æœ€å¾Œã«æ®‹ã£ãŸæ•°
   return res;
 }
 
-// Å‘åŒö–ñ”
+// æœ€å¤§å…¬ç´„æ•°
 ll GCD(ll a, ll b) {
   if (a % b == 0)
     return b;
@@ -108,12 +108,12 @@ ll GCD(ll a, ll b) {
     return GCD(b, a % b);
 }
 
-// Å¬Œö”{”
+// æœ€å°å…¬å€æ•°
 ll LCM(ll a, ll b) { return a * (b / GCD(a, b)); }
 
-// Šg’£ƒ†[ƒNƒŠƒbƒh‚ÌŒİœ–@
-// ax + by = gcd(a, b) ‚ğ–‚½‚· (x, y) ‚ªŠi”[‚³‚ê‚é
-// •Ô‚è’l: a ‚Æ b ‚ÌÅ‘åŒö–ñ”
+// æ‹¡å¼µãƒ¦ãƒ¼ã‚¯ãƒªãƒƒãƒ‰ã®äº’é™¤æ³•
+// ax + by = gcd(a, b) ã‚’æº€ãŸã™ (x, y) ãŒæ ¼ç´ã•ã‚Œã‚‹
+// è¿”ã‚Šå€¤: a ã¨ b ã®æœ€å¤§å…¬ç´„æ•°
 ll ExtGCD(ll a, ll b, ll &x, ll& y) {
   if (b == 0) {
     x = 1;
@@ -125,7 +125,7 @@ ll ExtGCD(ll a, ll b, ll &x, ll& y) {
   return d;
 }
 
-// Å’·‘‰Á•”•ª—ñiLISj
+// æœ€é•·å¢—åŠ éƒ¨åˆ†åˆ—ï¼ˆLISï¼‰
 template <class Type>
 size_t LIS(const std::vector<Type>& v) {
   std::vector<Type> dp;

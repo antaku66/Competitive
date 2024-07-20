@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+ï»¿#include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
 constexpr ll INF = 1LL << 60;
@@ -11,9 +11,9 @@ struct Edge {
 };
 
 /**
- * @brief  ’PˆêŽn“_‚©‚çŠe’¸“_‚Ö‚ÌÅ’ZŒo˜H‚ð‹‚ß‚é
- * @brief  dists ‚Ì‘S—v‘f‚ð INF ‚Å‰Šú‰»‚µ‚Ä‚¨‚­‚±‚Æ
- * @return •‰•Â˜H‚ª‘¶Ý‚·‚é‚Æ‚«false –³‚¯‚ê‚Îtrue
+ * @brief  å˜ä¸€å§‹ç‚¹ã‹ã‚‰å„é ‚ç‚¹ã¸ã®æœ€çŸ­çµŒè·¯ã‚’æ±‚ã‚ã‚‹
+ * @brief  dists ã®å…¨è¦ç´ ã‚’ INF ã§åˆæœŸåŒ–ã—ã¦ãŠãã“ã¨
+ * @return è² é–‰è·¯ãŒå­˜åœ¨ã™ã‚‹ã¨ãfalse ç„¡ã‘ã‚Œã°true
  */
 bool BellmanFord(const std::vector<Edge>& edges, std::vector<ll>& dist,
                  int startIndex) {

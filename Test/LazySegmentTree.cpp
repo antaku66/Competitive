@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+ï»¿#include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
 constexpr ll INF = 1LL << 60;
@@ -72,30 +72,30 @@ class LazySumSegmentTree {
 
  private:
   void EvalLazy(int k, int l, int r) {
-    // ’x‰„”z—ñ‚ª‹ó‚Å‚È‚¢ê‡A©ƒm[ƒh‹y‚Ñqƒm[ƒh‚Ö‚Ì’l‚Ì“`”d‚ª‹N‚±‚é
+    // é…å»¶é…åˆ—ãŒç©ºã§ãªã„å ´åˆã€è‡ªãƒãƒ¼ãƒ‰åŠã³å­ãƒãƒ¼ãƒ‰ã¸ã®å€¤ã®ä¼æ’­ãŒèµ·ã“ã‚‹
     if (lazy_[k] != 0) {
       node_[k] += lazy_[k];
 
-      // Å‰º’i‚©‚Ç‚¤‚©‚Ìƒ`ƒFƒbƒN
-      // q‚Íe‚Ì 1/2 ‚Ì”ÍˆÍ‚Å‚ ‚é‚½‚ß“`”d‚³‚¹‚é‚Æ‚«‚Í”¼•ª
+      // æœ€ä¸‹æ®µã‹ã©ã†ã‹ã®ãƒã‚§ãƒƒã‚¯
+      // å­ã¯è¦ªã® 1/2 ã®ç¯„å›²ã§ã‚ã‚‹ãŸã‚ä¼æ’­ã•ã›ã‚‹ã¨ãã¯åŠåˆ†
       if (r - l > 1) {
         lazy_[2 * k + 1] += lazy_[k] / 2;
         lazy_[2 * k + 2] += lazy_[k] / 2;
       }
-      lazy_[k] = 0;  // “`”d‚ªI‚í‚Á‚½‚Ì‚Å©ƒm[ƒh‚Ì’x‰„”z—ñ‚ğ‹ó‚É‚·‚é
+      lazy_[k] = 0;  // ä¼æ’­ãŒçµ‚ã‚ã£ãŸã®ã§è‡ªãƒãƒ¼ãƒ‰ã®é…å»¶é…åˆ—ã‚’ç©ºã«ã™ã‚‹
     }
   }
 
   void AddImpl(int a, int b, ll x, int k, int l, int r) {
-    EvalLazy(k, l, r);  // k ”Ô–Ú‚Ìƒm[ƒh‚É‘Î‚µ‚Ä’x‰„•]‰¿‚ğs‚¤
-    if (b <= l || r <= a) return;  // ”ÍˆÍŠO‚È‚ç‰½‚à‚µ‚È‚¢
+    EvalLazy(k, l, r);  // k ç•ªç›®ã®ãƒãƒ¼ãƒ‰ã«å¯¾ã—ã¦é…å»¶è©•ä¾¡ã‚’è¡Œã†
+    if (b <= l || r <= a) return;  // ç¯„å›²å¤–ãªã‚‰ä½•ã‚‚ã—ãªã„
 
-    // Š®‘S‚É”í•¢‚µ‚Ä‚¢‚é‚È‚ç‚ÎA’x‰„”z—ñ‚É’l‚ğ“ü‚ê‚½Œã‚É•]‰¿
+    // å®Œå…¨ã«è¢«è¦†ã—ã¦ã„ã‚‹ãªã‚‰ã°ã€é…å»¶é…åˆ—ã«å€¤ã‚’å…¥ã‚ŒãŸå¾Œã«è©•ä¾¡
     if (a <= l && r <= b) {
       lazy_[k] += (r - l) * x;
       EvalLazy(k, l, r);
     }
-    // ‚»‚¤‚Å‚È‚¯‚ê‚Îq‚Ì’l‚ğÄ‹A“I‚ÉŒvZ‚µ‚ÄŒvZÏ‚İ‚Ì’l‚ğ–á‚¤
+    // ãã†ã§ãªã‘ã‚Œã°å­ã®å€¤ã‚’å†å¸°çš„ã«è¨ˆç®—ã—ã¦è¨ˆç®—æ¸ˆã¿ã®å€¤ã‚’è²°ã†
     else {
       AddImpl(a, b, x, 2 * k + 1, l, (l + r) / 2);
       AddImpl(a, b, x, 2 * k + 2, (l + r) / 2, r);
@@ -105,7 +105,7 @@ class LazySumSegmentTree {
 
   ll QueryImpl(int a, int b, int k, int l, int r) {
     if (b <= l || r <= a) return 0;
-    EvalLazy(k, l, r);  // ŠÖ”‚ªŒÄ‚Ño‚³‚ê‚½‚ç•]‰¿
+    EvalLazy(k, l, r);  // é–¢æ•°ãŒå‘¼ã³å‡ºã•ã‚ŒãŸã‚‰è©•ä¾¡
     if (a <= l && r <= b) return node_[k];
     ll vl = QueryImpl(a, b, 2 * k + 1, l, (l + r) / 2);
     ll vr = QueryImpl(a, b, 2 * k + 2, (l + r) / 2, r);

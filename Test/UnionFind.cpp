@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+ï»¿#include <bits/stdc++.h>
 using namespace std;
 
 namespace {
@@ -10,21 +10,21 @@ struct UnionFind {
     if (parants_[x] == -1) {
       return x;
     } else {
-      return parants_[x] = GetRoot(parants_[x]);  // Œo˜Hˆ³k
+      return parants_[x] = GetRoot(parants_[x]);  // çµŒè·¯åœ§ç¸®
     }
   }
 
   bool IsSame(int x, int y) { return GetRoot(x) == GetRoot(y); }
 
   bool Unite(int x, int y) {
-    // ª‚Ü‚ÅˆÚ“®‚·‚é
+    // æ ¹ã¾ã§ç§»å‹•ã™ã‚‹
     x = GetRoot(x), y = GetRoot(y);
     if (x == y) return false;
 
-    // union by rank(y‘¤‚ÌƒTƒCƒY‚ª¬‚³‚­‚È‚é‚æ‚¤‚É‚·‚é)
+    // union by rank(yå´ã®ã‚µã‚¤ã‚ºãŒå°ã•ããªã‚‹ã‚ˆã†ã«ã™ã‚‹)
     if (sizes_[x] < sizes_[y]) swap(x, y);
 
-    // y‚ğx‚Ìq‚Æ‚·‚é
+    // yã‚’xã®å­ã¨ã™ã‚‹
     parants_[y] = x;
     sizes_[x] += sizes_[y];
     return true;
