@@ -1,7 +1,7 @@
 ﻿#include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
-constexpr ll INF = 2e18;
+constexpr ll INF = 1LL << 60;
 
 namespace {
 

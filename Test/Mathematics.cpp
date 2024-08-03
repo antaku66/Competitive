@@ -1,8 +1,7 @@
 ﻿#include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
-const double PI = 3.141592653589793;
-const ll MAX = numeric_limits<ll>::max();
+constexpr double PI = 3.141592653589793;
 constexpr int MOD = 1e9 + 7;
 
 namespace {
