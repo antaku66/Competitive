@@ -62,6 +62,9 @@ ll nCr(ll n, ll r, ll m) {
   return Division(a, b, m);
 }
 
+// 重複組合せ
+ll nHr(ll n, ll r, ll m) { return nCr(n + r - 1, n - 1, m); }
+
 // nCrをそのまま返す(オーバーフローに注意)
 ll nCr(ll n, ll r) {
   if (n < r) return 0;
