@@ -11,6 +11,8 @@ constexpr ll INF = 1LL << 60;
 const vector<int> dx = {1, 0, -1, 0};
 const vector<int> dy = {0, 1, 0, -1};
 #define vec2d(T, name, n, m, ini) vector<vector<T>> name(n, vector<T>(m, ini))
+#define vec3d(T, name, n, m, l, ini) \
+  vector<vector<vector<T>>> name(n, vector<vector<T>>(m, vector<T>(l, ini)))
 #define REP(i, e) rep(i, 0, e)
 #define rep(i, s, e) for (ll i = s; i < (e); ++i)
 #define rrep(i, s, e) for (ll i = s; i >= (e); --i)
