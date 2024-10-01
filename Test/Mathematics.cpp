@@ -14,7 +14,8 @@ ll Floor(ll x, ll m) {
 
 // 10進数のnをN進数に変換
 string BaseTenToN(ll n, int N) {
-  if (n == 0) return "0";
+  if (n == 0)
+    return "0";
   string str = "";
   while (n) {
     str = to_string(n % N) + str;
@@ -51,7 +52,8 @@ ll Division(ll a, ll b, ll m) { return (a * Power(b, m - 2, m)) % m; }
 
 // nCrをmで割った余りを返す
 ll nCr(ll n, ll r, ll m) {
-  if (n < r) return 0;
+  if (n < r)
+    return 0;
   r = min(r, n - r);
   ll a = 1, b = 1;
   for (ll i = 0; i < r; ++i) {
@@ -66,7 +68,8 @@ ll nHr(ll n, ll r, ll m) { return nCr(n + r - 1, n - 1, m); }
 
 // nCrをそのまま返す(オーバーフローに注意)
 ll nCr(ll n, ll r) {
-  if (n < r) return 0;
+  if (n < r)
+    return 0;
   r = min(r, n - r);
   ll a = 1, b = 1;
   for (ll i = 0; i < r; ++i) {
@@ -78,27 +81,31 @@ ll nCr(ll n, ll r) {
 
 // 素数判定
 bool IsPrime(ll num) {
-  if (num == 2) return true;
+  if (num == 2)
+    return true;
   for (int i = 2; i * i <= num; ++i) {
-    if (num % i == 0) return false;
+    if (num % i == 0)
+      return false;
   }
   return true;
 }
 
 // 素因数分解
-vector<pair<ll, ll>> PrimeFactorize(ll N) {
+vector<pair<ll, ll>> PrimeFactorize(ll n) {
   vector<pair<ll, ll>> res;
-  for (ll a = 2; a * a <= N; ++a) {
-    if (N % a != 0) continue;
+  for (ll a = 2; a * a <= n; ++a) {
+    if (n % a != 0)
+      continue;
     ll ex = 0;  // 指数
 
-    while (N % a == 0) {
+    while (n % a == 0) {
       ++ex;
-      N /= a;  // 割れる限り割り続ける
+      n /= a;  // 割れる限り割り続ける
     }
     res.push_back({a, ex});
   }
-  if (N != 1) res.push_back({N, 1});  // 最後に残った数
+  if (n != 1)
+    res.push_back({n, 1});  // 最後に残った数
   return res;
 }
 
@@ -131,7 +138,7 @@ ll LCM(ll a, ll b) { return a * (b / GCD(a, b)); }
 // 拡張ユークリッドの互除法
 // ax + by = gcd(a, b) を満たす (x, y) が格納される
 // 返り値: a と b の最大公約数
-ll ExtGCD(ll a, ll b, ll &x, ll& y) {
+ll ExtGCD(ll a, ll b, ll& x, ll& y) {
   if (b == 0) {
     x = 1;
     y = 0;
