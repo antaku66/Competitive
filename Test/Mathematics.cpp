@@ -102,6 +102,21 @@ vector<pair<ll, ll>> PrimeFactorize(ll N) {
   return res;
 }
 
+// n以下の素数列挙
+std::vector<int> GetPrimes(int n) {
+  std::vector<bool> isPrime(n + 1, true);
+  std::vector<int> primes;
+  for (int i = 2; i <= n; ++i) {
+    if (isPrime[i]) {
+      for (int j = 2 * i; j <= n; j += i) {
+        isPrime[j] = false;
+      }
+      primes.emplace_back(i);
+    }
+  }
+  return primes;
+}
+
 // 最大公約数
 ll GCD(ll a, ll b) {
   if (a % b == 0)
