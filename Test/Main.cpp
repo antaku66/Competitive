@@ -10,6 +10,7 @@ const vector<ll> dx = { 1, 0, -1, 0 };
 #define INF 1LL << 60
 #define VEC2D(T, name, n, m, ini) vector<vector<T>> name(n, vector<T>(m, ini))
 #define VEC3D(T, name, n, m, l, ini) vector<vector<vector<T>>> name(n, vector<vector<T>>(m, vector<T>(l, ini)))
+#define VEC4D(T, name, n, m, l, k, ini) vector<vector<vector<vector<T>>>> name(n, vector<vector<vector<T>>>(m, vector<vector<T>>(l, vector<T>(k, ini))))
 #define REP(i, e) rep(i, 0, e)
 #define rep(i, s, e) for (ll i = s; i < static_cast<ll>(e); ++i)
 #define RREP(i, s) rrep(i, s, 0) 
